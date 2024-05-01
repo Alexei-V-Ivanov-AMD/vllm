@@ -50,6 +50,11 @@ class GPUExecutor(ExecutorBase):
         self.driver_worker.init_device()
         self.driver_worker.load_model()
 
+    def __del__(self):
+        del self.driver_worker
+        #gc.collect()
+        #torch.cuda.empty_cache()
+        
     def _init_spec_worker(self):
         """Initialize a SpecDecodeWorker, using a draft model for proposals.
         """

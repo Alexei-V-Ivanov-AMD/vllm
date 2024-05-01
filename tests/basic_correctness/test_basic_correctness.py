@@ -25,11 +25,13 @@ def test_models(
 ) -> None:
     hf_model = hf_runner(model, dtype=dtype)
     hf_outputs = hf_model.generate_greedy(example_prompts, max_tokens)
-    del hf_model
+    #del hf_model
+    hf_model.__exit__(0,0,None)
 
     vllm_model = vllm_runner(model, dtype=dtype, enforce_eager=enforce_eager)
     vllm_outputs = vllm_model.generate_greedy(example_prompts, max_tokens)
-    del vllm_model
+    #del vllm_model
+    vllm_model.__exit__(0,0,None)
 
     for i in range(len(example_prompts)):
         hf_output_ids, hf_output_str = hf_outputs[i]

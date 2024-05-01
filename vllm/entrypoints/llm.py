@@ -118,6 +118,11 @@ class LLM:
         self.llm_engine = LLMEngine.from_engine_args(
             engine_args, usage_context=UsageContext.LLM_CLASS)
         self.request_counter = Counter()
+        
+    def ___del__(self):
+        self.llm_engine.__del__()
+        #del self.llm_engine
+        #gc.collect()
 
     def get_tokenizer(
             self) -> Union[PreTrainedTokenizer, PreTrainedTokenizerFast]:
