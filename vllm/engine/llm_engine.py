@@ -307,6 +307,9 @@ class LLMEngine:
         # Use getattr since __init__ can fail before the field is set
         if model_executor := getattr(self, "model_executor", None):
             model_executor.shutdown()
+        #self.model_executor.__del__() #= None
+        #del self.model_executor
+        #gc.collect()
 
     def get_tokenizer(self) -> "PreTrainedTokenizer":
         return self.tokenizer.get_lora_tokenizer(None)

@@ -24,8 +24,11 @@ def test_duplicated_ignored_sequence_group():
     outputs = llm.generate(prompts, sampling_params=sampling_params)
 
     assert len(prompts) == len(outputs)
-
-
+    llm.__del__()
+    
+    gc.collect()
+    torch.cuda.empty_cache()
+        
 def test_max_tokens_none():
     sampling_params = SamplingParams(temperature=0.01,
                                      top_p=0.1,
@@ -37,11 +40,15 @@ def test_max_tokens_none():
     outputs = llm.generate(prompts, sampling_params=sampling_params)
 
     assert len(prompts) == len(outputs)
+    llm.__del__()
 
+    gc.collect()
+    torch.cuda.empty_cache()
 
 def test_gc():
     llm = LLM("facebook/opt-125m", enforce_eager=True)
-    del llm
+    #del llm
+    llm.__del__()
 
     gc.collect()
     torch.cuda.empty_cache()

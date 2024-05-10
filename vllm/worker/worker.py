@@ -85,6 +85,10 @@ class Worker(WorkerBase):
         self.cache_engine: CacheEngine
         self.gpu_cache: List[torch.Tensor]
 
+    def __del__(self):
+        del self.model_runner #=None
+        #gc.collect()
+
     def init_device(self) -> None:
         if self.device_config.device.type == "cuda":
             # torch.distributed.all_reduce does not free the input tensor until

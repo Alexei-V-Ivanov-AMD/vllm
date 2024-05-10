@@ -5,6 +5,7 @@ set -ex
 echo "--- ROCm info"
 rocminfo
 
+
 echo "--- Resetting GPUs"
 
 echo "reset" > /opt/amdgpu/etc/gpu_state
@@ -31,6 +32,7 @@ remove_docker_container() {
 }
 trap remove_docker_container EXIT
 
+
 echo "--- Running container"
 
 docker run \
@@ -41,4 +43,3 @@ docker run \
         --name ${container_name} \
         ${container_name} \
         /bin/bash -c "${@}"
-

@@ -26,6 +26,8 @@ from vllm.sequence import (MultiModalData, SamplerOutput, SequenceData,
 from vllm.utils import (CudaMemoryProfiler, get_kv_cache_torch_dtype, is_hip,
                         is_pin_memory_available, make_tensor_with_pad)
 
+import gc
+
 logger = init_logger(__name__)
 
 _PAD_SLOT_ID = -1
@@ -1008,6 +1010,9 @@ class ModelRunner:
         # more stable than cupy, we can remove this, e.g. in v0.4.1.
         self.graph_runners.clear()
         self.pynccl_backend = None
+        self.model = None
+        gc.collect()
+        torch.cuda.empty_cache()
 
     @property
     def vocab_size(self) -> int:
