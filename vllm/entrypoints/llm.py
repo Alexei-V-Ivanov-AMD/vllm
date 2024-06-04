@@ -293,6 +293,11 @@ class LLM:
         )
 
         outputs = self._run_engine(use_tqdm=use_tqdm)
+
+        f = open("./LLM_PROCESSING.TMP","a")
+        print(f"{sampling_params}\n{LLMEngine.validate_outputs(outputs, RequestOutput)}\n",file=f)
+        f.close()
+
         return LLMEngine.validate_outputs(outputs, RequestOutput)
 
     @overload  # LEGACY: single (prompt + optional token ids)
