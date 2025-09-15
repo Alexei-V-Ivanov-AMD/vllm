@@ -96,6 +96,7 @@ steps:
 - label: Core Test # 22min
   timeout_in_minutes: 35
   mirror_hardwares: [amdexperimental]
+  grade: Blocking
   fast_check: true
   source_file_dependencies:
   - vllm/core
