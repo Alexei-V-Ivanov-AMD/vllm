@@ -213,6 +213,7 @@ if [[ $commands == *"--shard-id="* ]]; then
   done
 else
   echo "Render devices: $BUILDKITE_AGENT_META_DATA_RENDER_DEVICES"
+
   docker run \
           --device /dev/kfd $BUILDKITE_AGENT_META_DATA_RENDER_DEVICES \
           --network=host \
