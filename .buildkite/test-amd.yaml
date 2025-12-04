@@ -961,7 +961,7 @@ steps:
 
 - label: Multi-Modal Models Test (Standard) # 60min
   timeout_in_minutes: 80
-  mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental, amdtmp]
   agent_pool: mi325_1
   # grade: Blocking
   torch_nightly: true
