@@ -2,8 +2,8 @@
 ARG REMOTE_VLLM="0"
 ARG COMMON_WORKDIR=/app
 #ARG BASE_IMAGE=rocm/vllm-dev:base
-ARG rocm/vllm-dev:base_upstream_only_torch_torch_2.9_test_20251119
-#ARG rocm/vllm-dev:base_upstream_triton_torch_torch_2.9_test_20251119
+ARG BASE_IMAGE=rocm/vllm-dev:base_upstream_only_torch_torch_2.9_test_20251119
+#ARG BASE_IMAGE=rocm/vllm-dev:base_upstream_triton_torch_torch_2.9_test_20251119
 
 FROM ${BASE_IMAGE} AS base
 
