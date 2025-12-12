@@ -328,7 +328,7 @@ steps:
 
 - label: V1 Test e2e + engine # 65min
   timeout_in_minutes: 90
-  mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental, amdtmp]
   agent_pool: mi325_8
   # grade: Blocking
   source_file_dependencies:
