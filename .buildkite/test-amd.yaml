@@ -1611,7 +1611,7 @@ steps:
 
 - label: DeepSeek V2-Lite Async EPLB Accuracy
   timeout_in_minutes: 60
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   agent_pool: mi325_4
   # grade: Blocking
   gpu: h100
