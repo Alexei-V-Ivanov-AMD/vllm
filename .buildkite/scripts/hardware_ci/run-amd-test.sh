@@ -225,7 +225,7 @@ if [[ $commands == *"--shard-id="* ]]; then
     exit 1
   fi
 
-elif [[ $commands == *"VLLM_TEST_GROUP_NAME=mi325_4-2-node-tests-4-gpus-in-total"* ]]; then
+elif [[ $commands == *"VLLM_TEST_GROUP_NAME=mi325_8-2-node-tests-4-gpus-in-total"* ]]; then
 
   export DCKR_VER=$(docker --version | sed 's/Docker version \(.*\), build .*/\1/')
 
